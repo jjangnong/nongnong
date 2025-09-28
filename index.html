@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>간단 예약 사이트</title>
+  <style>
+    /* 전체 배경에 사진 넣기 */
+    body {
+      margin: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    /* 상단 설명 박스 */
+    header {
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    /* 예약 폼 박스 스타일 */
+    form {
+      background: rgba(0, 0, 0, 0.6);
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    /* 입력 필드 스타일 */
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    /* 예약 버튼 스타일 */
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* 달력(날짜 선택기) 스타일 */
+    input[type="date"] {
+      background-color: white;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  2025년 10월부터 12월까지 예약 가능합니다.<br>
+  한 날짜에 한 명만 예약할 수 있어요.
+</header>
+
+<form id="reservation-form">
+  <label for="name">이름</label>
+  <input type="text" id="name" name="name" required />
+
+  <label for="date">예약 날짜 (2025-10-01 ~ 2025-12-31)</label>
+  <input type="date" id="date" name="date" min="2025-10-01" max="2025-12-31" required />
+
+  <label for="message">신랑신부에게 한마디</label>
+  <textarea id="message" name="message" rows="4" placeholder="응원의 말을 적어주세요." required></textarea>
+
+  <button type="submit">예약하기</button>
+</form>
+
+<script>
+  // 이미 예약된 날짜를 저장하는 배열 (간단 예시)
+  const bookedDates = [];
+
+  const form = document.getElementById('reservation-form');
+  const dateInput = document.getElementById('date');
+
+  // 날짜 선택 시 이미 예약된 날짜는 선택 못 하도록 막기
+  dateInput.addEventListener('input', () => {
+    const selectedDate = dateInput.value;
+    if (bookedDates.includes(selectedDate)) {
+      alert('이미 예약된 날짜입니다. 다른 날짜를 선택해주세요.');
+      dateInput.value = '';
+    }
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const name = form.name.value.trim();
+    const date = form.date.value;
+    const message = form.message.value.trim();
+
+    if (bookedDates.includes(date)) {
+      alert('이미 예약된 날짜입니다. 다른 날짜를 선택해주세요.');
+      return;
+    }
+
+    // 예약 처리 (여기서는 간단히 bookedDates 배열에 추가)
+    bookedDates.push(date);
+
+    alert(`예약 완료!\n이름: ${name}\n날짜: ${date}\n메시지: ${message}`);
+
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
