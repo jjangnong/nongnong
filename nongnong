@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>예매 사이트</title>
+
+  <!-- 배경 사진과 글꼴 스타일을 위한 CSS -->
+  <style>
+    /* 전체 페이지에 배경 이미지 적용 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80'); /* 배경사진 주소 */
+      background-size: cover; /* 배경사진을 화면 크기에 맞게 조절 */
+      background-position: center;
+      color: white;
+    }
+
+    /* 상단 설명 문구 스타일 */
+    header {
+      background: rgba(0, 0, 0, 0.5); /* 검은색 반투명 배경 */
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    /* 폼 영역 스타일 */
+    main {
+      background: rgba(0, 0, 0, 0.6);
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 8px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #ff7f50;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #ff6333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단 설명 문구 -->
+  <header>
+    2025년 10월부터 12월까지 예매를 받습니다. 하루 한 명만 예약 가능해요!
+  </header>
+
+  <!-- 예약 폼 영역 -->
+  <main>
+    <form id="reservationForm">
+      <label for="date">예약 날짜 선택 (2025년 10월 ~ 12월)</label>
+      <input type="date" id="date" name="date" min="2025-10-01" max="2025-12-31" required />
+
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required />
+
+      <label for="message">신랑신부에게 한마디</label>
+      <textarea id="message" name="message" placeholder="응원의 메시지를 남겨주세요" rows="4" required></textarea>
+
+      <button type="submit">예약하기</button>
+    </form>
+  </main>
+
+  <script>
+    // 폼 제출 이벤트 핸들러
+    document.getElementById('reservationForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // 폼 기본 제출 막기
+
+      // 입력 값 가져오기
+      const date = document.getElementById('date').value;
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // 간단한 유효성 검사
+      if (!date || !name || !message) {
+        alert('모든 항목을 입력해주세요!');
+        return;
+      }
+
+      // 여기서는 예약 중복 체크나 서버 연동이 없어서 단순히 알림창만 띄워요
+      alert(`${date}에 예약 완료되었습니다!\n이름: ${name}\n메시지: ${message}`);
+
+      // 폼 초기화
+      this.reset();
+    });
+  </script>
+</body>
+</html>
