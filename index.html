@@ -21,7 +21,7 @@
       text-align: center;
       font-size: 1.5em;
       font-weight: bold;
-      width: 100%
+      width: 100%;
       max-width: 600px;
       margin: 20px auto 0 auto;
       border-radius: 8px;
@@ -31,7 +31,7 @@
     /* 예약 폼 박스 스타일 */
     form {
       background: rgba(0, 0, 0, 0.2);
-      width:90%
+      width:90%;
       max-width: 600px;
       margin: 40px auto;
       padding: 20px;
@@ -84,19 +84,25 @@
   }
 .desktop-text, .mobile-text {
   display: block;
-  line-height: 1.4; /* 줄 간격 균일하게 */
+  line-height: 1.0; /* 줄 간격 균일하게 */
   margin: 0;
   padding: 0;
 }
 
 @media (max-width: 600px) {
   .desktop-text {
-    display: none;
+    display: none !important;
   }
   .mobile-text {
-    display: block; /* inline → block */
+    display: block !important;
   }
-}  
+
+  header {
+    font-size: 1em;
+    padding: 16px;
+  }
+}
+
   </style>
 </head>
 <body>
