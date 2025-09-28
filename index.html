@@ -73,13 +73,16 @@
 <body>
 
 <header>
-  2025년 10월부터 12월까지 예약 가능합니다.<br>
-  한 날짜에 한 명만 예약할 수 있어요.
+  2025.12.28. 김진영&장은영의 결혼식이 진행됩니다.<br>
+  예매 후 티켓을 받을 날짜를 지정해주시면 확인 후 확정문자 드리겠습니다. 단체는 대표자만 예약하셔도 됩니다:D.
 </header>
 
 <form id="reservation-form">
   <label for="name">이름</label>
   <input type="text" id="name" name="name" required />
+
+  <label for="people">예약 인원</label>
+<input type="number" id="people" name="people" min="1" max="10" value="1" required />
 
   <label for="date">예약 날짜 (2025-10-01 ~ 2025-12-31)</label>
   <input type="date" id="date" name="date" min="2025-10-01" max="2025-12-31" required />
