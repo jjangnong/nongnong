@@ -130,7 +130,7 @@
   <input type="number" id="people" name="people" min="1" max="10" value="1" required />
 
   <label for="date">티켓 수령 날짜 (2025-10-01 ~ 2025-12-21)</label>
-  <input type="date" id="date" name="date" min="2025-10-01" max="2025-12-21" required />
+  <input type="date" id="date" name="date" min="2025-09-30" max="2025-12-21" required />
 
   <label for="message">요청사항</label>
   <textarea id="message" name="message" rows="4" placeholder="짱농진농에게 한마디♥" required></textarea>
@@ -140,11 +140,14 @@
 
 <script>
   const form = document.getElementById('reservation-form');
+  const submitButton = form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // JSON으로 변환
+    // 클릭 직후 버튼 비활성화 -> 중복 전송 방지
+    submitButton.disabled = true;
+
     const formData = {
       name: form.name.value,
       people: form.people.value,
@@ -165,11 +168,15 @@
         alert('예매가 정상적으로 완료되었습니다! 감사합니다 😊');
         form.reset();
       } else {
-        alert('전화문의 주세요😅');
+        alert('카톡이나 전화로 문의주세요😅');
       }
     })
     .catch(() => {
-      alert('전화문의 주세요😅');
+      alert('카톡이나 전화로 문의주세요😅');
+    })
+    .finally(() => {
+      // 전송 완료 후 버튼 다시 활성화 (원하면 유지)
+      submitButton.disabled = false;
     });
   });
 </script>
