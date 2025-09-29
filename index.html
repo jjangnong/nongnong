@@ -160,72 +160,64 @@
 </form>
 
 <script>
-  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzp9iSVtq1VMMe4pBcBaewABOSel08N-VAqbDtsxajBfYyT54G_nrYrTDREaioj1e7W/exec'; // 본인의 구글 앱스크립트 웹앱 주소 넣기
+const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbwYrpgMHpxrfeh8TEhOFykB5evJQQxbQBqujwKya5o9LHHxZgHiWxjTDt56lkCYh4Rr/exec'; // 배포 후 URL
 
-  const bookedDates = [];
+const bookedDates = [];
+const form = document.getElementById('reservation-form');
+const dateInput = document.getElementById('date');
 
-  const form = document.getElementById('reservation-form');
-  const dateInput = document.getElementById('date');
-
-  // 페이지 로드 시 예약된 날짜 목록 받아오기
-  async function fetchBookedDates() {
-    try {
-      const response = await fetch(WEBAPP_URL);
-      if (!response.ok) throw new Error('예약된 날짜를 불러오는 데 실패했습니다.');
-      const data = await response.json();
-      bookedDates.push(...data); // 배열에 예약된 날짜 넣기
-    } catch (error) {
-      alert(error.message);
-    }
+// 예약된 날짜 가져오기
+async function fetchBookedDates() {
+  try {
+    const response = await fetch(WEBAPP_URL);
+    const data = await response.json();
+    bookedDates.push(...data);
+  } catch (err) {
+    console.error(err);
   }
+}
 
-  fetchBookedDates();
+fetchBookedDates();
 
-  // 날짜 선택 시 예약된 날짜 선택 막기
-  dateInput.addEventListener('input', () => {
-    const selectedDate = dateInput.value;
-    if (bookedDates.includes(selectedDate)) {
-      alert('이미 예약된 날짜입니다. 다른 날짜를 선택해주세요ㅠㅠ');
-      dateInput.value = '';
+// 날짜 선택 시 안내 (중복 허용이므로 막지 않음)
+dateInput.addEventListener('input', () => {
+  const selectedDate = dateInput.value;
+  if (bookedDates.includes(selectedDate)) {
+    alert('이미 선택된 좌석입니다.');
+  }
+});
+
+// 폼 제출
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+
+  const name = form.name.value.trim();
+  const people = form.people.value;
+  const date = form.date.value;
+  const message = form.message.value.trim();
+
+  try {
+    const res = await fetch(WEBAPP_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, people, date, message })
+    });
+
+    const result = await res.json();
+
+    if (result.status === 'success') {
+      alert('예매 완료♡\n이름: ' + name + '\n날짜: ' + date + '\n메시지: ' + message);
+      form.reset();
+    } else {
+      alert('예매 오류: ' + result.message);
     }
-  });
-
-  // 폼 제출 처리
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-
-    const name = form.name.value.trim();
-    const people = form.people.value;
-    const date = form.date.value;
-    const message = form.message.value.trim();
-
-    if (bookedDates.includes(date)) {
-      alert('이미 예약된 날짜입니다. 다른 날짜를 선택해주세요ㅠㅠ');
-      return;
-    }
-
-    // 구글 앱스크립트 웹앱에 예약 데이터 POST 요청
-    try {
-      const response = await fetch(WEBAPP_URL, {
-        method: 'POST',
-        body: JSON.stringify({ name, people, date, message }),
-        headers: { 'Content-Type': 'application/json' }
-      });
-      const result = await response.json();
-
-      if (result.status === 'success') {
-        alert('예약 완료!\n이름: ' + name + '\n날짜: ' + date + '\n메시지: ' + message);
-        bookedDates.push(date); // 예약된 날짜에 추가
-        form.reset();
-      } else {
-        alert(result.message || '예약 처리 중 오류가 발생했습니다.');
-      }
-    } catch (error) {
-      alert('예약 요청 중 오류가 발생했습니다.');
-      console.error(error);
-    }
-  });
+  } catch (err) {
+    console.error(err);
+    alert('예매 요청 중 오류가 발생했습니다.');
+  }
+});
 </script>
+
 
 
 </body>
