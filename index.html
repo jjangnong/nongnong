@@ -6,7 +6,7 @@
 <title>김진영&장은영 결혼식 예매사이트</title>
 <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
 <style>
-body { margin:0; font-family:'Noto Sans KR', sans-serif; background:url('https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/0UNIQ7164.jpg') no-repeat center center fixed; background-size:cover; color:white;}
+body {margin:0; font-family:'Noto Sans KR',sans-serif; background:url('https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/0UNIQ7164.jpg') no-repeat center center fixed; background-size:cover; color:white;}
 header {background:rgba(0,0,0,0.2); padding:20px; text-align:center; font-size:1.5em; border-radius:8px; max-width:600px; margin:20px auto 0 auto; font-family:'Dongle',sans-serif; font-weight:700;}
 form {background:rgba(0,0,0,0.2); width:90%; max-width:600px; margin:40px auto; padding:20px; border-radius:8px; box-sizing:border-box;}
 label {display:block; margin-top:15px; font-weight:600;}
@@ -36,7 +36,7 @@ input[type="date"] {background-color:white; color:black;}
 </form>
 
 <script>
-const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxziIVav-WmuMxtK_klMMfuzSzqd6-yDKBcq5z_zaEScD_tpWzEGDl8SKYRPh32KbTB/exec'; // 여기에 Apps Script 배포 URL
+const WEBAPP_URL = 'YOUR_WEBAPP_URL'; // 여기 Apps Script WebApp 배포 URL
 
 const bookedDates = [];
 const form = document.getElementById('reservation-form');
@@ -45,18 +45,18 @@ const dateInput = document.getElementById('date');
 // 예약된 날짜 가져오기
 async function fetchBookedDates() {
   try {
-    const response = await fetch(WEBAPP_URL);
-    const text = await response.text();
+    const res = await fetch(WEBAPP_URL);
+    const text = await res.text();
     const data = JSON.parse(text);
     bookedDates.push(...data);
-  } catch (err) { console.error(err); }
+  } catch(err){ console.error(err); }
 }
 
 fetchBookedDates();
 
 // 날짜 선택 시 알림
 dateInput.addEventListener('input', () => {
-  if (bookedDates.includes(dateInput.value)) alert('이미 선택된 날짜입니다.');
+  if(bookedDates.includes(dateInput.value)) alert('이미 선택된 날짜입니다.');
 });
 
 // 폼 제출
@@ -85,7 +85,7 @@ form.addEventListener('submit', async e => {
     }
   } catch(err){
     console.error(err);
-    alert('수정이 된건가...');
+    alert('전화로 문의 바랍니다.');
   }
 });
 </script>
