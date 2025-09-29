@@ -36,59 +36,91 @@ input[type="date"] {background-color:white; color:black;}
 </form>
 
 <script>
-const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbwvQvQaWT6rtp5izZp8pgk1MCcp_G1d6JxTrsE5XzVax-RVNxU4XNsGDioENMC6PuVX/exec'; // 여기 Apps Script WebApp 배포 URL
+const AIRTABLE_API_URL = "https://api.airtable.com/v0/appp1PlTQh49Nv4sj/Table%201";
+const AIRTABLE_TOKEN = "patHoENJMNA4WGKKq.81c4d38e6bf72c3f55a05b9e11de11245099b2cc5e49039e100906180dea6857";
 
 const bookedDates = [];
 const form = document.getElementById('reservation-form');
 const dateInput = document.getElementById('date');
 
-// 예약된 날짜 가져오기
+// 1️⃣ 예약된 날짜 목록 불러오기
 async function fetchBookedDates() {
   try {
-    const res = await fetch(WEBAPP_URL);
-    const text = await res.text();
-    const data = JSON.parse(text);
-    bookedDates.push(...data);
-  } catch(err){ console.error(err); }
+    const res = await fetch(`${AIRTABLE_API_URL}?fields[]=date`, {
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_TOKEN}`
+      }
+    });
+    const data = await res.json();
+    const dates = data.records.map(record => record.fields.date);
+    bookedDates.push(...dates);
+  } catch (err) {
+    console.error("예약 날짜 불러오기 오류", err);
+  }
 }
 
 fetchBookedDates();
 
-// 날짜 선택 시 알림
+// 2️⃣ 날짜 중복 확인
 dateInput.addEventListener('input', () => {
-  if(bookedDates.includes(dateInput.value)) alert('이미 선택된 날짜입니다.');
+  if (bookedDates.includes(dateInput.value)) {
+    alert('이미 예약된 날짜입니다. 다른 날짜를 선택해주세요.');
+    dateInput.value = '';
+  }
 });
 
-// 폼 제출
+// 3️⃣ 폼 제출 (Airtable에 저장)
 form.addEventListener('submit', async e => {
   e.preventDefault();
+
   const name = form.name.value.trim();
-  const people = form.people.value;
+  const people = parseInt(form.people.value);
   const date = form.date.value;
   const message = form.message.value.trim();
 
-  try {
-    const res = await fetch(WEBAPP_URL, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({name, people, date, message})
-    });
-    const text = await res.text();
-    const result = JSON.parse(text);
+  if (!name || !people || !date || !message) {
+    alert("모든 항목을 입력해주세요.");
+    return;
+  }
 
-    if(result.status==='success'){
-      alert('예매 완료!\n이름:'+name+'\n날짜:'+date+'\n메시지:'+message);
+  try {
+    const res = await fetch(AIRTABLE_API_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_TOKEN}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        records: [
+          {
+            fields: {
+              "Name": name,
+              "people": people,
+              "date": date,
+              "message": message
+            }
+          }
+        ]
+      })
+    });
+
+    const result = await res.json();
+
+    if (res.ok) {
+      alert(`✅ 예매 완료!\n👤 이름: ${name}\n📅 날짜: ${date}\n💬 메시지: ${message}`);
       form.reset();
-      bookedDates.push(date);
+      bookedDates.push(date); // 새로 예약된 날짜 추가
     } else {
-      alert('예매 오류: '+result.message);
+      console.error(result);
+      alert("에러 발생: " + (result.error?.message || "알 수 없는 에러"));
     }
-  } catch(err){
+  } catch (err) {
     console.error(err);
-    alert('바뀐건 맞나요.');
+    alert("예약 처리 중 오류가 발생했습니다.");
   }
 });
 </script>
+
 
 </body>
 </html>
