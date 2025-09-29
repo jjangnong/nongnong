@@ -36,7 +36,7 @@ input[type="date"] {background-color:white; color:black;}
 </form>
 
 <script>
-const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzbl-P3FdJMFXjmtY7Q4MzU_2rwB6-o8qZ6VSAZn6A0-Q8heDcX2Wgpk9xMvYPOvba2/exec'; // 여기에 Apps Script 배포 URL
+const WEBAPP_URL = 'YOUR_WEBAPP_URL'; // 여기에 Apps Script 배포 URL
 
 const bookedDates = [];
 const form = document.getElementById('reservation-form');
@@ -46,7 +46,8 @@ const dateInput = document.getElementById('date');
 async function fetchBookedDates() {
   try {
     const response = await fetch(WEBAPP_URL);
-    const data = await response.json();
+    const text = await response.text();
+    const data = JSON.parse(text);
     bookedDates.push(...data);
   } catch (err) { console.error(err); }
 }
@@ -72,9 +73,11 @@ form.addEventListener('submit', async e => {
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({name, people, date, message})
     });
-    const result = await res.json();
+    const text = await res.text();
+    const result = JSON.parse(text);
+
     if(result.status==='success'){
-      alert('예매 완료♡\n이름:'+name+'\n날짜:'+date+'\n메시지:'+message);
+      alert('예매 완료!\n이름:'+name+'\n날짜:'+date+'\n메시지:'+message);
       form.reset();
       bookedDates.push(date);
     } else {
@@ -82,7 +85,7 @@ form.addEventListener('submit', async e => {
     }
   } catch(err){
     console.error(err);
-    alert('왜 안되냐구.');
+    alert('전화로 문의 바랍니다.');
   }
 });
 </script>
