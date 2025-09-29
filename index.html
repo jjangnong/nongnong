@@ -37,7 +37,7 @@ input[type="date"] {background-color:white; color:black;}
 
 <script>
 const AIRTABLE_API_URL = "https://api.airtable.com/v0/appp1PlTQh49Nv4sj/Table%201";
-const AIRTABLE_TOKEN = "patHoENJMNA4WGKKq.81c4d38e6bf72c3f55a05b9e11de11245099b2cc5e49039e100906180dea6857";
+const AIRTABLE_TOKEN = "pathOeNJMNA4WGKKq";
 
 const bookedDates = [];
 const form = document.getElementById('reservation-form');
@@ -94,7 +94,7 @@ form.addEventListener('submit', async e => {
         records: [
           {
             fields: {
-              "Name": name,
+              "Name": Name,
               "people": people,
               "date": date,
               "message": message
