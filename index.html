@@ -74,7 +74,7 @@ form.addEventListener('submit', async e => {
     });
     const result = await res.json();
     if(result.status==='success'){
-      alert('예매 완료!\n이름:'+name+'\n날짜:'+date+'\n메시지:'+message);
+      alert('예매 완료♡\n이름:'+name+'\n날짜:'+date+'\n메시지:'+message);
       form.reset();
       bookedDates.push(date);
     } else {
@@ -82,7 +82,7 @@ form.addEventListener('submit', async e => {
     }
   } catch(err){
     console.error(err);
-    alert('전화로 문의 바랍니다.');
+    alert('왜 안되냐구.');
   }
 });
 </script>
