@@ -1,166 +1,42 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>김진영&장은영 결혼식 예매사이트</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
-  <meta name="description" content="2025.12.28 김진영 & 장은영 결혼식 예매 — 티켓 수령일 지정하시면 확정 문자 드립니다." />
-
-  <!-- Open Graph: 카카오톡 / 페이스북 등에서 보여질 카드 -->
-   <meta property="og:title" content="2025.12.28 김진영&장은영 결혼식 예매" />
-  <meta property="og:description" content="예매 후 티켓 수령일 지정바랍니다." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://jjangnong.github.io/nongnong/" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/UNIQ71592.JPG" />
-  <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/UNIQ71592.JPG" />
-  <meta property="og:image:alt" content="김진영 & 장은영 결혼식 초대 이미지" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
-  <style>
-    /* 전체 배경에 사진 넣기 */
-    body {
-      margin: 0;
-      font-family: 'Noto Sans KR', sans-serif;
-      background: url('https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/0UNIQ7164.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-    }
-
-    /* 상단 설명 박스 */
-    header {
-      background: rgba(0, 0, 0, 0.2);
-      padding: 20px;
-      text-align: center;
-      font-size: 3em;
-      font-weight: bold;
-      width: 100%;
-      max-width: 600px;
-      margin: 20px auto 0 auto;
-      border-radius: 8px;
-      box-sizing: border-box;
-      font-family: 'Dongle', sans-serif;
-      font-weight: 700;
-    }
-
-    /* 예약 폼 박스 스타일 */
-    form {
-      background: rgba(0, 0, 0, 0.2);
-      width:90%;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      border-radius: 8px;
-      box-sizing: border-box;
-    }
-
-    /* 입력 필드 스타일 */
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: 600;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: none;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-
-    /* 예약 버튼 스타일 */
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background-color: #637FDE;
-      border: none;
-      color: white;
-      font-size: 1em;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #637FDE;
-    }
-
-    /* 달력(날짜 선택기) 스타일 */
-    input[type="date"] {
-      background-color: white;
-      color: black;
-    }
-    @media (max-width: 600px) {
-    header {
-      font-size: 1.5em;
-      padding: 16px;
-    }
-  }
-.desktop-text {
-  display: block;
-  line-height: 1.0;
-  margin: 0;
-  padding: 0;
-}
-
-.mobile-text {
-  display: none;  /* 기본 상태에서는 숨김 */
-  line-height: 0.4;
-  margin: 0;
-  padding: 0;
-}
-
-@media (max-width: 600px) {
-  .desktop-text {
-    display: none;
-  }
-  .mobile-text {
-    display: block;
-  }
-}
-
-  header {
-    font-size: 1.5em;
-    padding: 16px;
-  }
-}
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김진영&장은영 결혼식 예매사이트</title>
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
+<style>
+body { margin:0; font-family:'Noto Sans KR', sans-serif; background:url('https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/0UNIQ7164.jpg') no-repeat center center fixed; background-size:cover; color:white;}
+header {background:rgba(0,0,0,0.2); padding:20px; text-align:center; font-size:1.5em; border-radius:8px; max-width:600px; margin:20px auto 0 auto; font-family:'Dongle',sans-serif; font-weight:700;}
+form {background:rgba(0,0,0,0.2); width:90%; max-width:600px; margin:40px auto; padding:20px; border-radius:8px; box-sizing:border-box;}
+label {display:block; margin-top:15px; font-weight:600;}
+input, textarea {width:100%; padding:8px; margin-top:5px; border:none; border-radius:4px; box-sizing:border-box;}
+button {margin-top:20px; width:100%; padding:12px; background-color:#637FDE; border:none; color:white; font-size:1em; border-radius:4px; cursor:pointer;}
+button:hover {background-color:#637FDE;}
+input[type="date"] {background-color:white; color:black;}
+</style>
 </head>
 <body>
 
 <header>
-  <div class="desktop-text">
-    <p>2025.12.28. 김진영&장은영의 결혼식 예매사이트입니다.</p>
-    <p>티켓 수령 날짜를 지정해주시면 확인 후 확정문자 드리겠습니다:D</p>
-  </div>
-  <div class="mobile-text">
-    <p>2025.12.28. 김진영&장은영의</p> <p>결혼식 예매사이트입니다.</p>
-    <p>티켓 수령 날짜를 지정해주시면</p> <p>확인 후 확정문자 드리겠습니다:D</p>
-  </div>
+2025.12.28. 김진영&장은영 결혼식 예매사이트<br>
+티켓 수령 날짜를 지정해주시면 확인 후 확정문자 드리겠습니다:D
 </header>
 
-
 <form id="reservation-form">
-  <label for="name">이름(단체명)</label>
-  <input type="text" id="name" name="name" required />
-
-  <label for="people">예매 인원</label>
-<input type="number" id="people" name="people" min="1" max="10" value="1" required />
-
-  <label for="date">티켓 수령 날짜 (2025-10-01 ~ 2025-12-21)</label>
-  <input type="date" id="date" name="date" min="2025-09-30" max="2025-12-21" required />
-
-  <label for="message">요청사항</label>
-  <textarea id="message" name="message" rows="4" placeholder="짱농진농에게 한마디♥" required></textarea>
-
-  <button type="submit">예매하기</button>
+<label for="name">이름(단체명)</label>
+<input type="text" id="name" name="name" required>
+<label for="people">예매 인원</label>
+<input type="number" id="people" name="people" min="1" max="10" value="1" required>
+<label for="date">티켓 수령 날짜 (2025-10-01 ~ 2025-12-21)</label>
+<input type="date" id="date" name="date" min="2025-10-01" max="2025-12-21" required>
+<label for="message">요청사항</label>
+<textarea id="message" name="message" rows="4" placeholder="짱농진농에게 한마디♥" required></textarea>
+<button type="submit">예매하기</button>
 </form>
 
 <script>
-const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbwYrpgMHpxrfeh8TEhOFykB5evJQQxbQBqujwKya5o9LHHxZgHiWxjTDt56lkCYh4Rr/exec'; // 배포 후 URL
+const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzbl-P3FdJMFXjmtY7Q4MzU_2rwB6-o8qZ6VSAZn6A0-Q8heDcX2Wgpk9xMvYPOvba2/exec'; // 여기에 Apps Script 배포 URL
 
 const bookedDates = [];
 const form = document.getElementById('reservation-form');
@@ -172,25 +48,19 @@ async function fetchBookedDates() {
     const response = await fetch(WEBAPP_URL);
     const data = await response.json();
     bookedDates.push(...data);
-  } catch (err) {
-    console.error(err);
-  }
+  } catch (err) { console.error(err); }
 }
 
 fetchBookedDates();
 
-// 날짜 선택 시 안내 (중복 허용이므로 막지 않음)
+// 날짜 선택 시 알림
 dateInput.addEventListener('input', () => {
-  const selectedDate = dateInput.value;
-  if (bookedDates.includes(selectedDate)) {
-    alert('이미 선택된 좌석입니다.');
-  }
+  if (bookedDates.includes(dateInput.value)) alert('이미 선택된 날짜입니다.');
 });
 
 // 폼 제출
 form.addEventListener('submit', async e => {
   e.preventDefault();
-
   const name = form.name.value.trim();
   const people = form.people.value;
   const date = form.date.value;
@@ -198,27 +68,24 @@ form.addEventListener('submit', async e => {
 
   try {
     const res = await fetch(WEBAPP_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, people, date, message })
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name, people, date, message})
     });
-
     const result = await res.json();
-
-    if (result.status === 'success') {
-      alert('예매 완료♡\n이름: ' + name + '\n날짜: ' + date + '\n메시지: ' + message);
+    if(result.status==='success'){
+      alert('예매 완료!\n이름:'+name+'\n날짜:'+date+'\n메시지:'+message);
       form.reset();
+      bookedDates.push(date);
     } else {
-      alert('예매 오류: ' + result.message);
+      alert('예매 오류: '+result.message);
     }
-  } catch (err) {
+  } catch(err){
     console.error(err);
-    alert('전화로 문의주시길 바랍니다.');
+    alert('전화로 문의 바랍니다.');
   }
 });
 </script>
-
-
 
 </body>
 </html>
