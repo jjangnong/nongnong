@@ -171,6 +171,25 @@
 
   <button type="submit">예매하기</button>
 </form>
+   <!-- 모달 구조 시작 -->
+  <div id="ticket-modal" class="modal" style="display:none; justify-content:center; align-items:center; position:fixed; left:0; top:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); z-index: 1000;">
+    <div class="modal-content" style="background:white; padding:20px; border-radius:8px; max-width:400px; text-align:center; position:relative; color:black;">
+      <span id="close-modal" class="close" style="position:absolute; right:10px; top:10px; font-size:24px; cursor:pointer;">&times;</span>
+      <img src="https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/ticket.png" alt="모바일 티켓" style="width:100%; border-radius:8px;">
+      <button id="enter-btn" style="
+        margin-top: 15px;
+        padding: 12px 24px;
+        font-size: 1.2em;
+        background-color: #506ed8;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      ">입장하기</button>
+    </div>
+  </div>
+  <!-- 모달 구조 끝 -->
 
 <script>
 const startBtn = document.getElementById('start-btn');
@@ -226,9 +245,11 @@ form.addEventListener('submit', function(e) {
     body:JSON.stringify(formData)
   })
   .then(response => {
-    if(response.ok){
-      alert('예매가 정상적으로 완료되었습니다!\n확인 후 확정문자 드리겠습니다😊');
-      form.reset();
+if(response.ok){
+  // 기존 alert 대신 모달 띄우기
+  form.reset();
+  const modal = document.getElementById('ticket-modal');
+  modal.style.display = 'flex';
     } else {
       alert('카톡이나 전화로 문의주세요😅');
     }
@@ -236,6 +257,27 @@ form.addEventListener('submit', function(e) {
   .catch(()=>{ alert('카톡이나 전화로 문의주세요😅'); })
   .finally(()=>{ submitButton.disabled = false; });
 });
+   // 모달 닫기 버튼
+document.getElementById('close-modal').addEventListener('click', () => {
+  document.getElementById('ticket-modal').style.display = 'none';
+});
+
+// 입장하기 버튼 클릭 시 이동
+document.getElementById('enter-btn').addEventListener('click', () => {
+  window.location.href = 'https://pwinvitation.com/fbybevgdqkqw';
+});
+
+// 예매 성공 시 모달 띄우는 예시 (기존 코드에 추가)
+availableSeatBtn.addEventListener('click', () => {
+  availableSeatBtn.style.transform = 'scale(0.9)';
+  setTimeout(() => {
+    const modal = document.getElementById('ticket-modal');
+    modal.style.display = 'flex';
+    seatScreen.style.display = 'none';
+    availableSeatBtn.style.transform = '';
+  }, 150);
+});
 </script>
+
 </body>
 </html>
