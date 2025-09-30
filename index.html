@@ -36,8 +36,20 @@
 
   /* 초기화면 */
   #initial-screen { text-align:center; margin-top:20px; }
-  #start-btn { padding:20px 40px; font-size:1.5em; }
+  #start-btn {
+  font-family: 'Dongle', sans-serif; /* 글꼴 변경 */
+  background-color: #b3e6ff;         /* 버튼 배경색 */
+  color: white;                      /* 글자 색 */
+  padding: 20px 40px;                /* 버튼 크기 */
+  font-size: 1.5em;                  /* 글자 크기 */
+  border-radius: 8px;                /* 모서리 둥글게 */
+  transition: transform 0.1s, background 0.2s;
+}
 
+#start-btn:hover {
+  background-color: #506ed8;         /* 호버 시 색상 */
+  transform: scale(1.05);            /* 호버 시 확대 */
+}
   /* 좌석 선택 화면 */
   #seat-screen {
     display:none;
