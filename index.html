@@ -235,11 +235,10 @@ disabledSeats.forEach(btn => {
   });
 });
 
-// 파란 좌석 클릭 → 예매 성공 alert 후 폼으로
+// 파란 좌석 클릭 → 폼만 보여줌 (모달은 아직 X)
 availableSeatBtn.addEventListener('click', () => {
   availableSeatBtn.style.transform = 'scale(0.9)';
   setTimeout(() => {
-    alert('예매 성공! 티켓 수령날짜를 입력해주세요.');
     seatScreen.style.display = 'none';
     formWrapper.style.display = 'block';
     availableSeatBtn.style.transform = '';
@@ -267,19 +266,25 @@ form.addEventListener('submit', function(e) {
     body:JSON.stringify(formData)
   })
   .then(response => {
-if(response.ok){
-  // 기존 alert 대신 모달 띄우기
-  form.reset();
-  const modal = document.getElementById('ticket-modal');
-  modal.style.display = 'flex';
+    if(response.ok){
+      // ✅ 성공 시: 모달 띄우기
+      form.reset();
+      formWrapper.style.display = 'none';
+      const modal = document.getElementById('ticket-modal');
+      modal.style.display = 'flex';
     } else {
       alert('카톡이나 전화로 문의주세요😅');
     }
   })
-  .catch(()=>{ alert('카톡이나 전화로 문의주세요😅'); })
-  .finally(()=>{ submitButton.disabled = false; });
+  .catch(() => {
+    alert('카톡이나 전화로 문의주세요😅');
+  })
+  .finally(() => {
+    submitButton.disabled = false;
+  });
 });
-   // 모달 닫기 버튼
+
+// 모달 닫기 버튼
 document.getElementById('close-modal').addEventListener('click', () => {
   document.getElementById('ticket-modal').style.display = 'none';
 });
@@ -287,17 +292,6 @@ document.getElementById('close-modal').addEventListener('click', () => {
 // 입장하기 버튼 클릭 시 이동
 document.getElementById('enter-btn').addEventListener('click', () => {
   window.location.href = 'https://pwinvitation.com/fbybevgdqkqw';
-});
-
-// 예매 성공 시 모달 띄우는 예시 (기존 코드에 추가)
-availableSeatBtn.addEventListener('click', () => {
-  availableSeatBtn.style.transform = 'scale(0.9)';
-  setTimeout(() => {
-    const modal = document.getElementById('ticket-modal');
-    modal.style.display = 'flex';
-    seatScreen.style.display = 'none';
-    availableSeatBtn.style.transform = '';
-  }, 150);
 });
 </script>
 
