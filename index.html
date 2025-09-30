@@ -34,11 +34,11 @@
   header {
     background: rgba(0,0,0,0.2);
     padding: 20px; text-align: center;
-    font-size: 3em;
+    font-size: 2.5em;
     font-weight: bold; max-width: 600px; margin: 20px auto 0 auto;
     border-radius: 8px; font-family: 'Dongle', sans-serif;
   }
-  @media(max-width:600px){ header{font-size:1.5em; padding:16px;} }
+  @media(max-width:600px){ header{font-size:2.5em; padding:16px;} }
 
   /* 버튼 공통 스타일 */
   button {
@@ -72,16 +72,18 @@
     display:none;
     text-align:center;
     margin:20px auto;
-    background: url('https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/seat.png') no-repeat center center;
+    background-color:#b3e6ff;
     background-size: cover;
     padding: 50px 0;
     border-radius: 8px;
     max-width: 400px;
     font-family: 'Dongle', sans-serif;  
   }
-  #seat-screen p { font-size:1.2em; margin-bottom:20px; }
+  #seat-screen p { font-size:2em;  color: #0077b3; margin-bottom:20px; }
   #seat-screen .seat-btn {
-    width:80px; height:50px; font-size: 12px; white-space: normal; font-weight:bold; border-radius:6px; transition: transform 0.1s, background 0.2s;
+  display: flex;               /* 플렉스 박스로 변경 */
+  justify-content: center;     /* 가로 중앙 정렬 */
+  align-items: center; width:80px; height:50px; font-size: 12px; white-space: normal; font-weight:bold; border-radius:6px; transition: transform 0.1s, background 0.2s;
   }
   #seat-screen .seat-btn.available { background:#637FDE; color:white; }
   #seat-screen .seat-btn.disabled { background:#ccc; cursor:not-allowed; }
