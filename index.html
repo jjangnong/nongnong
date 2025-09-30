@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>김진영&장은영 결혼식 예매사이트</title>
 <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet" />
+<meta name="description" content="2025.12.28 김진영 & 장은영 결혼식 예매 — 티켓 수령일 지정하시면 확정 문자 드립니다." />
+
 <style>
   body {
     margin: 0;
@@ -133,13 +135,9 @@ disabledSeats.forEach(btn => {
 
 // 파란 좌석 클릭 → 예매 성공 alert 후 폼으로
 availableSeatBtn.addEventListener('click', () => {
-  availableSeatBtn.style.transform = 'scale(0.9)';
-  setTimeout(() => {
-    alert('예매 성공! 티켓 수령날짜를 입력해주세요.');
-    seatScreen.style.display = 'none';
-    formWrapper.style.display = 'block';
-    availableSeatBtn.style.transform = '';
-  }, 150);
+  alert('예매 성공! 티켓 수령날짜를 입력해주세요.');
+  seatScreen.style.display = 'none';
+  formWrapper.style.display = 'block';
 });
 
 // 예약폼 제출
@@ -174,5 +172,6 @@ form.addEventListener('submit', function(e) {
   .finally(()=>{ submitButton.disabled = false; });
 });
 </script>
+
 </body>
 </html>
