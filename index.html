@@ -171,15 +171,46 @@
 
   <button type="submit">예매하기</button>
 </form>
-  <!-- 모달 구조 시작 -->
+ <!-- 모달 구조 시작 -->
 <div id="ticket-modal" class="modal" style="display:none; justify-content:center; align-items:center; position:fixed; left:0; top:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); z-index: 1000;">
-  <div class="modal-content" style="background:white; padding:20px; border-radius:8px; max-width:400px; text-align:center; position:relative; color:black;">
-    <span id="close-modal" class="close" ...>×</span>
-    <img src="..." alt="모바일 티켓" ...>
-    <button id="enter-btn" ...>입장하기</button>
+  <div class="modal-content" style="position: relative; padding:0; border-radius:8px; max-width:400px; overflow:hidden; background: transparent;">
+    <img id="ticket-img" src="https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/ticket.png" alt="모바일 티켓" style="width:100%; display:block;">
+
+    <button id="enter-btn" style="
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 24px;
+      font-size: 1.1em;
+      background-color: #506ed8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      z-index: 10;
+    ">입장하기</button>
+
+    <span id="close-modal" class="close" style="
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      background: white;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      z-index: 10;
+    ">&times;</span>
+
   </div>
 </div>
 <!-- 모달 구조 끝 -->
+
 
 
 <script>
