@@ -261,17 +261,20 @@ form.addEventListener('submit', function(e) {
   };
 
   fetch(form.action, {
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify(formData)
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(formData)
   })
   .then(response => {
-    if(response.ok){
-      // ✅ 성공 시: 모달 띄우기
-      form.reset();
-      formWrapper.style.display = 'none';
-      const modal = document.getElementById('ticket-modal');
-      modal.style.display = 'flex';
+    if (response.ok) {
+      form.reset();  // ✅ 기존 alert를 먼저 보여줌
+      alert('티켓 수령 날짜 지정 완료!\n확인 후 확정문자 드리겠습니다😊'); // ✅ 변경된 부분
+
+      // ✅ alert가 끝난 뒤 모달 띄우기
+      setTimeout(() => {
+        const modal = document.getElementById('ticket-modal');
+        modal.style.display = 'flex';
+      }, 100); // ✅ 변경된 부분
     } else {
       alert('카톡이나 전화로 문의주세요😅');
     }
@@ -284,7 +287,7 @@ form.addEventListener('submit', function(e) {
   });
 });
 
-// 모달 닫기 버튼
+// 모달 닫기
 document.getElementById('close-modal').addEventListener('click', () => {
   document.getElementById('ticket-modal').style.display = 'none';
 });
