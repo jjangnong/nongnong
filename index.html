@@ -6,6 +6,14 @@
 <title>김진영&장은영 결혼식 예매사이트</title>
 <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet" />
 <style>
+    @font-face {
+    font-family: 'Giants';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
   #start-btn {
   font-family: 'Giants', sans-serif; /* Giants 글꼴 적용 */
   background-color: #b3e6ff;         
@@ -73,7 +81,7 @@
   }
   #seat-screen p { font-size:1.2em; margin-bottom:20px; }
   #seat-screen .seat-btn {
-    width:80px; height:50px; font-size: 12px; font-weight:bold; border-radius:6px; transition: transform 0.1s, background 0.2s;
+    width:80px; height:50px; font-size: 12px; white-space: normal; font-weight:bold; border-radius:6px; transition: transform 0.1s, background 0.2s;
   }
   #seat-screen .seat-btn.available { background:#637FDE; color:white; }
   #seat-screen .seat-btn.disabled { background:#ccc; cursor:not-allowed; }
@@ -122,16 +130,16 @@
 <div id="seat-screen">
   <p>좌석을 선택해주세요</p>
   <div style="display:grid; grid-template-columns:repeat(3,80px); gap:10px; justify-content:center;">
-    <button class="seat-btn disabled">1루내야필드석</button>
+    <button class="seat-btn disabled">1루 내야필드석</button>
     <button class="seat-btn disabled">중앙상단석</button>
-    <button class="seat-btn disabled">3루내야필드석</button>
+    <button class="seat-btn disabled">3루 내야필드석</button>
 
     <button class="seat-btn disabled">김진영</button>
-    <button class="seat-btn available">신랑신부응원석❤️</button>
+    <button class="seat-btn available">신랑신부 응원석❤️</button>
     <button class="seat-btn disabled">장은영</button>
 
     <button class="seat-btn disabled">내야상단석</button>
-    <button class="seat-btn disabled">로케트밧데리존</button>
+    <button class="seat-btn disabled">로케트 배터리존</button>
     <button class="seat-btn disabled">외야석</button>
   </div>
 </div>
