@@ -1,123 +1,94 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>김진영&장은영 결혼식 예매사이트</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet" />
-  <meta name="description" content="2025.12.28 김진영 & 장은영 결혼식 예매 — 티켓 수령일 지정하시면 확정 문자 드립니다." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>김진영&장은영 결혼식 예매사이트</title>
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    background: url('https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/0UNIQ7164.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+  }
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 1em;
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  button:active { transform: scale(0.95); box-shadow: 0 2px 5px rgba(0,0,0,0.3) inset; }
 
-  <!-- Open Graph 메타태그 -->
-  <meta property="og:title" content="2025.12.28 김진영&장은영 결혼식 예매" />
-  <meta property="og:description" content="예매 후 티켓 수령일 지정바랍니다." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://jjangnong.github.io/nongnong/" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/UNIQ71592.JPG" />
-  <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/UNIQ71592.JPG" />
-  <meta property="og:image:alt" content="김진영 & 장은영 결혼식 초대 이미지" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  #initial-screen { text-align:center; margin-top:200px; }
+  #seat-screen { display:none; text-align:center; margin-top:50px; }
+  #seat-screen p { font-size:1.2em; margin-bottom:20px; }
+  #seat-screen .seat-btn { width:80px; height:50px; font-weight:bold; border-radius:6px; transition: transform 0.1s, background 0.2s; }
+  #seat-screen .seat-btn:hover:not(:disabled) { background:#506ed8; transform:scale(1.05); }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Noto Sans KR', sans-serif;
-      background: url('https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/0UNIQ7164.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-    }
-    header {
-      background: rgba(0, 0, 0, 0.2);
-      padding: 20px;
-      text-align: center;
-      font-size: 2em;
-      font-weight: bold;
-      max-width: 600px;
-      margin: 20px auto 0 auto;
-      border-radius: 8px;
-      box-sizing: border-box;
-      font-family: 'Dongle', sans-serif;
-      font-weight: 700;
-    }
-    form {
-      background: rgba(0, 0, 0, 0.2);
-      width: 90%;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      border-radius: 8px;
-      box-sizing: border-box;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: 600;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: none;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background-color: #637FDE;
-      border: none;
-      color: white;
-      font-size: 1em;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #637FDE;
-    }
-    input[type="date"] {
-      background-color: white;
-      color: black;
-    }
-    @media (max-width: 600px) {
-      header {
-        font-size: 1.5em;
-        padding: 16px;
-      }
-    }
-    .desktop-text {
-      display: block;
-      line-height: 1.0;
-      margin: 0;
-      padding: 0;
-    }
-    .mobile-text {
-      display: none;
-      line-height: 0.4;
-      margin: 0;
-      padding: 0;
-    }
-    @media (max-width: 600px) {
-      .desktop-text {
-        display: none;
-      }
-      .mobile-text {
-        display: block;
-      }
-    }
-  </style>
+  form {
+    background: rgba(0,0,0,0.2);
+    width:90%; max-width:600px;
+    margin:40px auto; padding:20px;
+    border-radius:8px; box-sizing:border-box;
+    display:none;
+  }
+  label { display:block; margin-top:15px; font-weight:600; }
+  input, textarea { width:100%; padding:8px; margin-top:5px; border:none; border-radius:4px; box-sizing:border-box; }
+  button[type="submit"] { margin-top:20px; width:100%; padding:12px; background-color:#637FDE; color:white; font-size:1em; }
+  button[type="submit"]:hover { background-color:#506ed8; }
+  input[type="date"] { background-color:white; color:black; }
+
+  .desktop-text { display:block; } .mobile-text { display:none; }
+  @media(max-width:600px) { .desktop-text{display:none;} .mobile-text{display:block;} }
+
+  header {
+    background: rgba(0,0,0,0.2);
+    padding:20px; text-align:center; font-size:2.5em;
+    font-weight:bold; max-width:600px; margin:20px auto 0 auto;
+    border-radius:8px; font-family:'Dongle',sans-serif;
+  }
+  @media(max-width:600px){ header{font-size:1.5em; padding:16px;} }
+</style>
 </head>
 <body>
 
-<header>
+<!-- 초기 화면 -->
+<div id="initial-screen">
+  <button id="start-btn" style="padding:20px 40px; font-size:1.5em;">김진영&장은영 결혼식 예매</button>
+</div>
+
+<!-- 좌석 선택 화면 -->
+<div id="seat-screen">
+  <p>좌석을 선택해주세요</p>
+  <div style="display:grid; grid-template-columns:repeat(3,80px); gap:10px; justify-content:center;">
+    <button class="seat-btn disabled" style="background:#ccc;" disabled>A1</button>
+    <button class="seat-btn disabled" style="background:#ccc;" disabled>A2</button>
+    <button class="seat-btn disabled" style="background:#ccc;" disabled>A3</button>
+
+    <button class="seat-btn disabled" style="background:#ccc;" disabled>B1</button>
+    <button class="seat-btn available" style="background:#637FDE; color:white;">B2</button>
+    <button class="seat-btn disabled" style="background:#ccc;" disabled>B3</button>
+
+    <button class="seat-btn disabled" style="background:#ccc;" disabled>C1</button>
+    <button class="seat-btn disabled" style="background:#ccc;" disabled>C2</button>
+    <button class="seat-btn disabled" style="background:#ccc;" disabled>C3</button>
+  </div>
+</div>
+
+<!-- 예약 폼 화면 -->
+<header id="form-header">
   <div class="desktop-text">
     <p>2025.12.28. 김진영&장은영의 결혼식 예매사이트입니다.</p>
     <p>티켓 수령 날짜를 지정해주시면 확인 후 확정문자 드리겠습니다:D</p>
   </div>
   <div class="mobile-text">
-    <p>2025.12.28. 김진영&장은영의</p> 
+    <p>2025.12.28. 김진영&장은영의</p>
     <p>결혼식 예매사이트입니다.</p>
-    <p>티켓 수령 날짜를 지정해주시면</p> 
+    <p>티켓 수령 날짜를 지정해주시면</p>
     <p>확인 후 확정문자 드리겠습니다:D</p>
   </div>
 </header>
@@ -139,47 +110,69 @@
 </form>
 
 <script>
-  const form = document.getElementById('reservation-form');
-  const submitButton = form.querySelector('button[type="submit"]');
+const startBtn = document.getElementById('start-btn');
+const initialScreen = document.getElementById('initial-screen');
+const seatScreen = document.getElementById('seat-screen');
+const formWrapper = document.getElementById('reservation-form');
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
+const availableSeatBtn = seatScreen.querySelector('.seat-btn.available');
+const disabledSeats = seatScreen.querySelectorAll('.seat-btn.disabled');
 
-    // 클릭 직후 버튼 비활성화 -> 중복 전송 방지
-    submitButton.disabled = true;
+// 초기 화면 → 좌석 선택
+startBtn.addEventListener('click', () => {
+  initialScreen.style.display = 'none';
+  seatScreen.style.display = 'block';
+});
 
-    const formData = {
-      name: form.name.value,
-      people: form.people.value,
-      date: form.date.value,
-      message: form.message.value
-    };
-
-    fetch(form.action, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-    .then(response => {
-      if (response.ok) {
-        alert('예매가 정상적으로 완료되었습니다! 감사합니다 😊');
-        form.reset();
-      } else {
-        alert('카톡이나 전화로 문의주세요😅');
-      }
-    })
-    .catch(() => {
-      alert('카톡이나 전화로 문의주세요😅');
-    })
-    .finally(() => {
-      // 전송 완료 후 버튼 다시 활성화 (원하면 유지)
-      submitButton.disabled = false;
-    });
+// 회색 좌석 클릭 → alert
+disabledSeats.forEach(btn => {
+  btn.addEventListener('click', () => {
+    alert('이미 선택된 좌석입니다.');
   });
-</script>
+});
 
+// 파란 좌석 클릭 → 예매 성공 alert 후 폼으로
+availableSeatBtn.addEventListener('click', () => {
+  availableSeatBtn.style.transform = 'scale(0.9)';
+  setTimeout(() => {
+    alert('예매 성공! 티켓 수령날짜를 입력해주세요.');
+    seatScreen.style.display = 'none';
+    formWrapper.style.display = 'block';
+    availableSeatBtn.style.transform = '';
+  }, 150);
+});
+
+// 예약폼 제출
+const form = document.getElementById('reservation-form');
+const submitButton = form.querySelector('button[type="submit"]');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  submitButton.disabled = true;
+
+  const formData = {
+    name: form.name.value,
+    people: form.people.value,
+    date: form.date.value,
+    message: form.message.value
+  };
+
+  fetch(form.action, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(formData)
+  })
+  .then(response => {
+    if(response.ok){
+      alert('예매가 정상적으로 완료되었습니다! 감사합니다 😊');
+      form.reset();
+    } else {
+      alert('카톡이나 전화로 문의주세요😅');
+    }
+  })
+  .catch(()=>{ alert('카톡이나 전화로 문의주세요😅'); })
+  .finally(()=>{ submitButton.disabled = false; });
+});
+</script>
 </body>
 </html>
