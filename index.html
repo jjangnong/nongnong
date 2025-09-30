@@ -13,6 +13,17 @@
     background-size: cover;
     color: white;
   }
+
+  header {
+    background: rgba(0,0,0,0.2);
+    padding: 20px; text-align: center;
+    font-size: 2.5em;
+    font-weight: bold; max-width: 600px; margin: 20px auto 0 auto;
+    border-radius: 8px; font-family: 'Dongle', sans-serif;
+  }
+  @media(max-width:600px){ header{font-size:1.5em; padding:16px;} }
+
+  /* 버튼 공통 스타일 */
   button {
     cursor: pointer;
     border: none;
@@ -23,12 +34,31 @@
   }
   button:active { transform: scale(0.95); box-shadow: 0 2px 5px rgba(0,0,0,0.3) inset; }
 
-  #initial-screen { text-align:center; margin-top:200px; }
-  #seat-screen { display:none; text-align:center; margin-top:50px; }
-  #seat-screen p { font-size:1.2em; margin-bottom:20px; }
-  #seat-screen .seat-btn { width:80px; height:50px; font-weight:bold; border-radius:6px; transition: transform 0.1s, background 0.2s; }
-  #seat-screen .seat-btn:hover:not(:disabled) { background:#506ed8; transform:scale(1.05); }
+  /* 초기화면 */
+  #initial-screen { text-align:center; margin-top:20px; }
+  #start-btn { padding:20px 40px; font-size:1.5em; }
 
+  /* 좌석 선택 화면 */
+  #seat-screen {
+    display:none;
+    text-align:center;
+    margin:20px auto;
+    background: url('https://raw.githubusercontent.com/jjangnong/nongnong/refs/heads/main/0UNIQ7164.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 50px 0;
+    border-radius: 8px;
+    max-width: 400px;
+    font-family: 'Dongle', sans-serif;  
+  }
+  #seat-screen p { font-size:1.2em; margin-bottom:20px; }
+  #seat-screen .seat-btn {
+    width:80px; height:50px; font-weight:bold; border-radius:6px; transition: transform 0.1s, background 0.2s;
+  }
+  #seat-screen .seat-btn.available { background:#637FDE; color:white; }
+  #seat-screen .seat-btn.disabled { background:#ccc; cursor:not-allowed; }
+  #seat-screen .seat-btn:hover:not(.disabled) { background:#506ed8; transform:scale(1.05); }
+
+  /* 예약 폼 */
   form {
     background: rgba(0,0,0,0.2);
     width:90%; max-width:600px;
@@ -42,45 +72,15 @@
   button[type="submit"]:hover { background-color:#506ed8; }
   input[type="date"] { background-color:white; color:black; }
 
-  .desktop-text { display:block; } .mobile-text { display:none; }
-  @media(max-width:600px) { .desktop-text{display:none;} .mobile-text{display:block;} }
-
-  header {
-    background: rgba(0,0,0,0.2);
-    padding:20px; text-align:center; font-size:2.5em;
-    font-weight:bold; max-width:600px; margin:20px auto 0 auto;
-    border-radius:8px; font-family:'Dongle',sans-serif;
-  }
-  @media(max-width:600px){ header{font-size:1.5em; padding:16px;} }
+  .desktop-text { display:block; } 
+  .mobile-text { display:none; }
+  @media(max-width:600px){ .desktop-text{display:none;} .mobile-text{display:block;} }
 </style>
 </head>
 <body>
 
-<!-- 초기 화면 -->
-<div id="initial-screen">
-  <button id="start-btn" style="padding:20px 40px; font-size:1.5em;">김진영&장은영 결혼식 예매</button>
-</div>
-
-<!-- 좌석 선택 화면 -->
-<div id="seat-screen">
-  <p>좌석을 선택해주세요</p>
-  <div style="display:grid; grid-template-columns:repeat(3,80px); gap:10px; justify-content:center;">
-    <button class="seat-btn disabled" style="background:#ccc;" disabled>A1</button>
-    <button class="seat-btn disabled" style="background:#ccc;" disabled>A2</button>
-    <button class="seat-btn disabled" style="background:#ccc;" disabled>A3</button>
-
-    <button class="seat-btn disabled" style="background:#ccc;" disabled>B1</button>
-    <button class="seat-btn available" style="background:#637FDE; color:white;">B2</button>
-    <button class="seat-btn disabled" style="background:#ccc;" disabled>B3</button>
-
-    <button class="seat-btn disabled" style="background:#ccc;" disabled>C1</button>
-    <button class="seat-btn disabled" style="background:#ccc;" disabled>C2</button>
-    <button class="seat-btn disabled" style="background:#ccc;" disabled>C3</button>
-  </div>
-</div>
-
-<!-- 예약 폼 화면 -->
-<header id="form-header">
+<!-- 헤더 -->
+<header>
   <div class="desktop-text">
     <p>2025.12.28. 김진영&장은영의 결혼식 예매사이트입니다.</p>
     <p>티켓 수령 날짜를 지정해주시면 확인 후 확정문자 드리겠습니다:D</p>
@@ -93,6 +93,30 @@
   </div>
 </header>
 
+<!-- 초기화면 버튼 -->
+<div id="initial-screen">
+  <button id="start-btn">김진영&장은영 결혼식 예매</button>
+</div>
+
+<!-- 좌석 선택 화면 -->
+<div id="seat-screen">
+  <p>좌석을 선택해주세요</p>
+  <div style="display:grid; grid-template-columns:repeat(3,80px); gap:10px; justify-content:center;">
+    <button class="seat-btn disabled">1루내야필드석</button>
+    <button class="seat-btn disabled">중앙상단석</button>
+    <button class="seat-btn disabled">3루내야필드석</button>
+
+    <button class="seat-btn disabled">김진영</button>
+    <button class="seat-btn available">신랑신부응원석❤️</button>
+    <button class="seat-btn disabled">장은영</button>
+
+    <button class="seat-btn disabled">내야상단석</button>
+    <button class="seat-btn disabled">로케트밧데리존</button>
+    <button class="seat-btn disabled">외야석</button>
+  </div>
+</div>
+
+<!-- 예약 폼 -->
 <form id="reservation-form" action="https://submit-form.com/fH3q7f5w3" method="POST">
   <label for="name">이름(단체명)</label>
   <input type="text" id="name" name="name" required />
@@ -109,7 +133,6 @@
   <button type="submit">예매하기</button>
 </form>
 
-<!-- 스크립트: body 끝에 위치 -->
 <script>
 const startBtn = document.getElementById('start-btn');
 const initialScreen = document.getElementById('initial-screen');
@@ -134,9 +157,13 @@ disabledSeats.forEach(btn => {
 
 // 파란 좌석 클릭 → 예매 성공 alert 후 폼으로
 availableSeatBtn.addEventListener('click', () => {
-  alert('예매 성공! 티켓 수령날짜를 입력해주세요.');
-  seatScreen.style.display = 'none';
-  formWrapper.style.display = 'block';
+  availableSeatBtn.style.transform = 'scale(0.9)';
+  setTimeout(() => {
+    alert('예매 성공! 티켓 수령날짜를 입력해주세요.');
+    seatScreen.style.display = 'none';
+    formWrapper.style.display = 'block';
+    availableSeatBtn.style.transform = '';
+  }, 150);
 });
 
 // 예약폼 제출
@@ -171,6 +198,5 @@ form.addEventListener('submit', function(e) {
   .finally(()=>{ submitButton.disabled = false; });
 });
 </script>
-
 </body>
 </html>
