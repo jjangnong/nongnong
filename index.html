@@ -6,6 +6,15 @@
 <title>김진영&장은영 결혼식 예매사이트</title>
 <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet" />
 <style>
+  #start-btn {
+  font-family: 'Giants', sans-serif; /* Giants 글꼴 적용 */
+  background-color: #b3e6ff;         
+  color: #0077b3;                    
+  padding: 20px 40px;                
+  font-size: 1.5em;                  
+  border-radius: 8px;                
+  transition: transform 0.1s, background 0.2s;
+}
   body {
     margin: 0;
     font-family: 'Noto Sans KR', sans-serif;
@@ -37,9 +46,9 @@
   /* 초기화면 */
   #initial-screen { text-align:center; margin-top:20px; }
   #start-btn {
-  font-family: 'Dongle', sans-serif; /* 글꼴 변경 */
+  font-family:  'Giants', sans-serif; /* 글꼴 변경 */
   background-color: #b3e6ff;         /* 버튼 배경색 */
-  color: white;                      /* 글자 색 */
+  color: #0077b3;                      /* 글자 색 */
   padding: 20px 40px;                /* 버튼 크기 */
   font-size: 1.5em;                  /* 글자 크기 */
   border-radius: 8px;                /* 모서리 둥글게 */
@@ -94,8 +103,7 @@
 <!-- 헤더 -->
 <header>
   <div class="desktop-text">
-    <p>2025.12.28. 김진영&장은영의 결혼식 예매사이트입니다.</p>
-    <p>티켓 수령 날짜를 지정해주시면 확인 후 확정문자 드리겠습니다:D</p>
+    2025.12.28. 김진영&장은영의 결혼식 예매사이트입니다.
   </div>
   <div class="mobile-text">
     <p>2025.12.28. 김진영&장은영의</p>
@@ -200,7 +208,7 @@ form.addEventListener('submit', function(e) {
   })
   .then(response => {
     if(response.ok){
-      alert('예매가 정상적으로 완료되었습니다! 감사합니다 😊');
+      alert('예매가 정상적으로 완료되었습니다! 확인 후 확정문자 드리겠습니다😊');
       form.reset();
     } else {
       alert('카톡이나 전화로 문의주세요😅');
